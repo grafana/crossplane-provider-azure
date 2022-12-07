@@ -32,7 +32,7 @@ type PrivateDNSZoneObservation struct {
 
 	// An soa_record block as defined below. Changing this forces a new resource to be created.
 	// +kubebuilder:validation:Optional
-	SoaRecord []PrivateDNSZoneSoaRecordObservation `json:"soaRecord,omitempty" tf:"soa_record,omitempty"`
+	SoaRecord []SoaRecordObservation `json:"soaRecord,omitempty" tf:"soa_record,omitempty"`
 }
 
 type PrivateDNSZoneParameters struct {
@@ -52,14 +52,14 @@ type PrivateDNSZoneParameters struct {
 
 	// An soa_record block as defined below. Changing this forces a new resource to be created.
 	// +kubebuilder:validation:Optional
-	SoaRecord []PrivateDNSZoneSoaRecordParameters `json:"soaRecord,omitempty" tf:"soa_record,omitempty"`
+	SoaRecord []SoaRecordParameters `json:"soaRecord,omitempty" tf:"soa_record,omitempty"`
 
 	// A mapping of tags to assign to the resource.
 	// +kubebuilder:validation:Optional
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
-type PrivateDNSZoneSoaRecordObservation struct {
+type SoaRecordObservation struct {
 
 	// The fully qualified domain name of the Record Set.
 	Fqdn *string `json:"fqdn,omitempty" tf:"fqdn,omitempty"`
@@ -71,7 +71,7 @@ type PrivateDNSZoneSoaRecordObservation struct {
 	SerialNumber *float64 `json:"serialNumber,omitempty" tf:"serial_number,omitempty"`
 }
 
-type PrivateDNSZoneSoaRecordParameters struct {
+type SoaRecordParameters struct {
 
 	// The email contact for the SOA record.
 	// +kubebuilder:validation:Required
