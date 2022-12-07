@@ -9,9 +9,7 @@ import (
 
 	"github.com/upbound/upjet/pkg/controller"
 
-	activedirectoryadministrator "github.com/upbound/provider-azure/internal/controller/dbformysql/activedirectoryadministrator"
 	configuration "github.com/upbound/provider-azure/internal/controller/dbformysql/configuration"
-	database "github.com/upbound/provider-azure/internal/controller/dbformysql/database"
 	firewallrule "github.com/upbound/provider-azure/internal/controller/dbformysql/firewallrule"
 	flexibledatabase "github.com/upbound/provider-azure/internal/controller/dbformysql/flexibledatabase"
 	flexibleserver "github.com/upbound/provider-azure/internal/controller/dbformysql/flexibleserver"
@@ -25,9 +23,7 @@ import (
 // the supplied manager.
 func Setup_dbformysql(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		activedirectoryadministrator.Setup,
 		configuration.Setup,
-		database.Setup,
 		firewallrule.Setup,
 		flexibledatabase.Setup,
 		flexibleserver.Setup,

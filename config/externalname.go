@@ -1850,6 +1850,49 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 	"azurerm_app_configuration": config.TemplatedStringAsIdentifier("name", "/subscriptions/{{ .setup.configuration.subscription_id }}/resourceGroups/{{ .parameters.resource_group_name }}/providers/Microsoft.AppConfiguration/configurationStores/{{ .external_name }}"),
 }
 
+func init() {
+	acceptedKeys := map[string]struct{}{
+		"azurerm_subscription":                              {},
+		"azurerm_resource_provider_registration":            {},
+		"azurerm_resource_group":                            {},
+		"azurerm_key_vault":                                 {},
+		"azurerm_key_vault_key":                             {},
+		"azurerm_key_vault_managed_storage_account":         {},
+		"azurerm_mysql_server":                              {},
+		"azurerm_mysql_configuration":                       {},
+		"azurerm_mysql_firewall_rule":                       {},
+		"azurerm_mysql_virtual_network_rule":                {},
+		"azurerm_mysql_flexible_server":                     {},
+		"azurerm_mysql_flexible_database":                   {},
+		"azurerm_mysql_flexible_server_configuration":       {},
+		"azurerm_mysql_flexible_server_firewall_rule":       {},
+		"azurerm_virtual_network":                           {},
+		"azurerm_subnet":                                    {},
+		"azurerm_private_dns_zone":                          {},
+		"azurerm_postgresql_server":                         {},
+		"azurerm_postgresql_flexible_server_configuration":  {},
+		"azurerm_postgresql_database":                       {},
+		"azurerm_postgresql_active_directory_administrator": {},
+		"azurerm_postgresql_flexible_server_database":       {},
+		"azurerm_postgresql_flexible_server_firewall_rule":  {},
+		"azurerm_postgresql_firewall_rule":                  {},
+		"azurerm_postgresql_flexible_server":                {},
+		"azurerm_postgresql_virtual_network_rule":           {},
+		"azurerm_postgresql_server_key":                     {},
+		"azurerm_postgresql_configuration":                  {},
+		"azurerm_storage_account":                           {},
+		"azurerm_storage_blob":                              {},
+		"azurerm_storage_container":                         {},
+		"azurerm_storage_management_policy":                 {},
+	}
+
+	for k := range ExternalNameConfigs {
+		if _, ok := acceptedKeys[k]; !ok {
+			delete(ExternalNameConfigs, k)
+		}
+	}
+}
+
 func keyVaultURLIDConf(resourceType string) config.ExternalName {
 	e := config.NameAsIdentifier
 	e.GetExternalNameFn = getResourceNameFromIDURLFn(2)
