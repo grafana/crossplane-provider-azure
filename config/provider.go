@@ -23,39 +23,13 @@ import (
 	tjconfig "github.com/upbound/upjet/pkg/config"
 	"github.com/upbound/upjet/pkg/registry/reference"
 
-	"github.com/upbound/provider-azure/config/apimanagement"
-	"github.com/upbound/provider-azure/config/authorization"
 	"github.com/upbound/provider-azure/config/base"
-	"github.com/upbound/provider-azure/config/cache"
 	"github.com/upbound/provider-azure/config/common"
-	"github.com/upbound/provider-azure/config/compute"
-	"github.com/upbound/provider-azure/config/containerregistry"
-	"github.com/upbound/provider-azure/config/containerservice"
-	"github.com/upbound/provider-azure/config/cosmosdb"
-	"github.com/upbound/provider-azure/config/dataprotection"
-	"github.com/upbound/provider-azure/config/datashare"
 	"github.com/upbound/provider-azure/config/dbformysql"
-	"github.com/upbound/provider-azure/config/devices"
-	"github.com/upbound/provider-azure/config/eventhub"
-	"github.com/upbound/provider-azure/config/insights"
 	"github.com/upbound/provider-azure/config/keyvault"
-	"github.com/upbound/provider-azure/config/kusto"
-	"github.com/upbound/provider-azure/config/logic"
-	"github.com/upbound/provider-azure/config/management"
-	"github.com/upbound/provider-azure/config/mariadb"
-	"github.com/upbound/provider-azure/config/media"
-	"github.com/upbound/provider-azure/config/netapp"
 	"github.com/upbound/provider-azure/config/network"
-	"github.com/upbound/provider-azure/config/notificationhubs"
-	"github.com/upbound/provider-azure/config/operationalinsights"
 	"github.com/upbound/provider-azure/config/postgresql"
-	"github.com/upbound/provider-azure/config/resource"
-	"github.com/upbound/provider-azure/config/security"
-	"github.com/upbound/provider-azure/config/servicebus"
-	"github.com/upbound/provider-azure/config/sql"
 	"github.com/upbound/provider-azure/config/storage"
-	"github.com/upbound/provider-azure/config/storagecache"
-	"github.com/upbound/provider-azure/config/storagesync"
 )
 
 const (
@@ -141,38 +115,38 @@ func GetProvider() *tjconfig.Provider {
 
 	for _, configure := range []func(provider *tjconfig.Provider){
 		// add custom config functions
-		authorization.Configure,
+		// authorization.Configure,
 		network.Configure,
-		management.Configure,
-		media.Configure,
-		cache.Configure,
-		resource.Configure,
-		containerservice.Configure,
+		// management.Configure,
+		// media.Configure,
+		// cache.Configure,
+		// resource.Configure,
+		// containerservice.Configure,
 		postgresql.Configure,
-		cosmosdb.Configure,
-		sql.Configure,
+		// cosmosdb.Configure,
+		// sql.Configure,
 		storage.Configure,
-		operationalinsights.Configure,
-		insights.Configure,
-		devices.Configure,
-		apimanagement.Configure,
-		logic.Configure,
-		security.Configure,
+		// operationalinsights.Configure,
+		// insights.Configure,
+		// devices.Configure,
+		// apimanagement.Configure,
+		// logic.Configure,
+		// security.Configure,
 		base.Configure,
-		datashare.Configure,
-		notificationhubs.Configure,
-		storagesync.Configure,
+		// datashare.Configure,
+		// notificationhubs.Configure,
+		// storagesync.Configure,
 		keyvault.Configure,
-		eventhub.Configure,
-		mariadb.Configure,
-		compute.Configure,
-		containerregistry.Configure,
+		// eventhub.Configure,
+		// mariadb.Configure,
+		// compute.Configure,
+		// containerregistry.Configure,
 		dbformysql.Configure,
-		netapp.Configure,
-		dataprotection.Configure,
-		kusto.Configure,
-		storagecache.Configure,
-		servicebus.Configure,
+		// netapp.Configure,
+		// dataprotection.Configure,
+		// kusto.Configure,
+		// storagecache.Configure,
+		// servicebus.Configure,
 	} {
 		configure(pc)
 	}
