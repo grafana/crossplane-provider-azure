@@ -34,7 +34,7 @@ type PrivateDNSZoneObservation struct {
 	ResourceGroupName *string `json:"resourceGroupName,omitempty" tf:"resource_group_name,omitempty"`
 
 	// An soa_record block as defined below. Changing this forces a new resource to be created.
-	SoaRecord []PrivateDNSZoneSoaRecordObservation `json:"soaRecord,omitempty" tf:"soa_record,omitempty"`
+	SoaRecord []SoaRecordObservation `json:"soaRecord,omitempty" tf:"soa_record,omitempty"`
 
 	// A mapping of tags to assign to the resource.
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
@@ -57,14 +57,14 @@ type PrivateDNSZoneParameters struct {
 
 	// An soa_record block as defined below. Changing this forces a new resource to be created.
 	// +kubebuilder:validation:Optional
-	SoaRecord []PrivateDNSZoneSoaRecordParameters `json:"soaRecord,omitempty" tf:"soa_record,omitempty"`
+	SoaRecord []SoaRecordParameters `json:"soaRecord,omitempty" tf:"soa_record,omitempty"`
 
 	// A mapping of tags to assign to the resource.
 	// +kubebuilder:validation:Optional
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
-type PrivateDNSZoneSoaRecordObservation struct {
+type SoaRecordObservation struct {
 
 	// The email contact for the SOA record.
 	Email *string `json:"email,omitempty" tf:"email,omitempty"`
@@ -97,7 +97,7 @@ type PrivateDNSZoneSoaRecordObservation struct {
 	Tags map[string]*string `json:"tags,omitempty" tf:"tags,omitempty"`
 }
 
-type PrivateDNSZoneSoaRecordParameters struct {
+type SoaRecordParameters struct {
 
 	// The email contact for the SOA record.
 	// +kubebuilder:validation:Required

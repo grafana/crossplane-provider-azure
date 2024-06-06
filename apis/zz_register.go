@@ -10,197 +10,27 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1beta1 "github.com/upbound/provider-azure/apis/alertsmanagement/v1beta1"
-	v1beta1analysisservices "github.com/upbound/provider-azure/apis/analysisservices/v1beta1"
-	v1beta1apimanagement "github.com/upbound/provider-azure/apis/apimanagement/v1beta1"
-	v1beta1appconfiguration "github.com/upbound/provider-azure/apis/appconfiguration/v1beta1"
-	v1beta1appplatform "github.com/upbound/provider-azure/apis/appplatform/v1beta1"
-	v1beta1attestation "github.com/upbound/provider-azure/apis/attestation/v1beta1"
-	v1beta1authorization "github.com/upbound/provider-azure/apis/authorization/v1beta1"
-	v1beta1automation "github.com/upbound/provider-azure/apis/automation/v1beta1"
-	v1beta1azure "github.com/upbound/provider-azure/apis/azure/v1beta1"
-	v1beta1azurestackhci "github.com/upbound/provider-azure/apis/azurestackhci/v1beta1"
-	v1beta1botservice "github.com/upbound/provider-azure/apis/botservice/v1beta1"
-	v1beta1cache "github.com/upbound/provider-azure/apis/cache/v1beta1"
-	v1beta1cdn "github.com/upbound/provider-azure/apis/cdn/v1beta1"
-	v1beta1certificateregistration "github.com/upbound/provider-azure/apis/certificateregistration/v1beta1"
-	v1beta1cognitiveservices "github.com/upbound/provider-azure/apis/cognitiveservices/v1beta1"
-	v1beta1communication "github.com/upbound/provider-azure/apis/communication/v1beta1"
-	v1beta1compute "github.com/upbound/provider-azure/apis/compute/v1beta1"
-	v1beta1confidentialledger "github.com/upbound/provider-azure/apis/confidentialledger/v1beta1"
-	v1beta1consumption "github.com/upbound/provider-azure/apis/consumption/v1beta1"
-	v1beta1containerregistry "github.com/upbound/provider-azure/apis/containerregistry/v1beta1"
-	v1beta1containerservice "github.com/upbound/provider-azure/apis/containerservice/v1beta1"
-	v1beta1cosmosdb "github.com/upbound/provider-azure/apis/cosmosdb/v1beta1"
-	v1beta1costmanagement "github.com/upbound/provider-azure/apis/costmanagement/v1beta1"
-	v1beta1customproviders "github.com/upbound/provider-azure/apis/customproviders/v1beta1"
-	v1beta1databoxedge "github.com/upbound/provider-azure/apis/databoxedge/v1beta1"
-	v1beta1databricks "github.com/upbound/provider-azure/apis/databricks/v1beta1"
-	v1beta1datafactory "github.com/upbound/provider-azure/apis/datafactory/v1beta1"
-	v1beta1datamigration "github.com/upbound/provider-azure/apis/datamigration/v1beta1"
-	v1beta1dataprotection "github.com/upbound/provider-azure/apis/dataprotection/v1beta1"
-	v1beta1datashare "github.com/upbound/provider-azure/apis/datashare/v1beta1"
-	v1beta1dbformariadb "github.com/upbound/provider-azure/apis/dbformariadb/v1beta1"
+	v1beta1 "github.com/upbound/provider-azure/apis/azure/v1beta1"
 	v1beta1dbformysql "github.com/upbound/provider-azure/apis/dbformysql/v1beta1"
 	v1beta1dbforpostgresql "github.com/upbound/provider-azure/apis/dbforpostgresql/v1beta1"
-	v1beta1devices "github.com/upbound/provider-azure/apis/devices/v1beta1"
-	v1beta1deviceupdate "github.com/upbound/provider-azure/apis/deviceupdate/v1beta1"
-	v1beta1devtestlab "github.com/upbound/provider-azure/apis/devtestlab/v1beta1"
-	v1beta1digitaltwins "github.com/upbound/provider-azure/apis/digitaltwins/v1beta1"
-	v1beta1elastic "github.com/upbound/provider-azure/apis/elastic/v1beta1"
-	v1beta1eventgrid "github.com/upbound/provider-azure/apis/eventgrid/v1beta1"
-	v1beta1eventhub "github.com/upbound/provider-azure/apis/eventhub/v1beta1"
-	v1beta1fluidrelay "github.com/upbound/provider-azure/apis/fluidrelay/v1beta1"
-	v1beta1guestconfiguration "github.com/upbound/provider-azure/apis/guestconfiguration/v1beta1"
-	v1beta1hdinsight "github.com/upbound/provider-azure/apis/hdinsight/v1beta1"
-	v1beta1healthbot "github.com/upbound/provider-azure/apis/healthbot/v1beta1"
-	v1beta1healthcareapis "github.com/upbound/provider-azure/apis/healthcareapis/v1beta1"
-	v1beta1insights "github.com/upbound/provider-azure/apis/insights/v1beta1"
-	v1beta1iotcentral "github.com/upbound/provider-azure/apis/iotcentral/v1beta1"
 	v1beta1keyvault "github.com/upbound/provider-azure/apis/keyvault/v1beta1"
-	v1beta1kusto "github.com/upbound/provider-azure/apis/kusto/v1beta1"
-	v1beta1labservices "github.com/upbound/provider-azure/apis/labservices/v1beta1"
-	v1beta1logic "github.com/upbound/provider-azure/apis/logic/v1beta1"
-	v1beta1logz "github.com/upbound/provider-azure/apis/logz/v1beta1"
-	v1beta1machinelearningservices "github.com/upbound/provider-azure/apis/machinelearningservices/v1beta1"
-	v1beta1maintenance "github.com/upbound/provider-azure/apis/maintenance/v1beta1"
-	v1beta1managedidentity "github.com/upbound/provider-azure/apis/managedidentity/v1beta1"
-	v1beta1management "github.com/upbound/provider-azure/apis/management/v1beta1"
-	v1beta1maps "github.com/upbound/provider-azure/apis/maps/v1beta1"
-	v1beta1marketplaceordering "github.com/upbound/provider-azure/apis/marketplaceordering/v1beta1"
-	v1beta1media "github.com/upbound/provider-azure/apis/media/v1beta1"
-	v1beta1mixedreality "github.com/upbound/provider-azure/apis/mixedreality/v1beta1"
-	v1beta1netapp "github.com/upbound/provider-azure/apis/netapp/v1beta1"
 	v1beta1network "github.com/upbound/provider-azure/apis/network/v1beta1"
-	v1beta1notificationhubs "github.com/upbound/provider-azure/apis/notificationhubs/v1beta1"
-	v1beta1operationalinsights "github.com/upbound/provider-azure/apis/operationalinsights/v1beta1"
-	v1beta1operationsmanagement "github.com/upbound/provider-azure/apis/operationsmanagement/v1beta1"
-	v1beta1orbital "github.com/upbound/provider-azure/apis/orbital/v1beta1"
-	v1beta1policyinsights "github.com/upbound/provider-azure/apis/policyinsights/v1beta1"
-	v1beta1portal "github.com/upbound/provider-azure/apis/portal/v1beta1"
-	v1beta1powerbidedicated "github.com/upbound/provider-azure/apis/powerbidedicated/v1beta1"
-	v1beta1purview "github.com/upbound/provider-azure/apis/purview/v1beta1"
-	v1beta1recoveryservices "github.com/upbound/provider-azure/apis/recoveryservices/v1beta1"
-	v1beta1relay "github.com/upbound/provider-azure/apis/relay/v1beta1"
-	v1beta1resources "github.com/upbound/provider-azure/apis/resources/v1beta1"
-	v1beta1search "github.com/upbound/provider-azure/apis/search/v1beta1"
-	v1beta1security "github.com/upbound/provider-azure/apis/security/v1beta1"
-	v1beta1securityinsights "github.com/upbound/provider-azure/apis/securityinsights/v1beta1"
-	v1beta1servicebus "github.com/upbound/provider-azure/apis/servicebus/v1beta1"
-	v1beta1servicefabric "github.com/upbound/provider-azure/apis/servicefabric/v1beta1"
-	v1beta1servicelinker "github.com/upbound/provider-azure/apis/servicelinker/v1beta1"
-	v1beta1signalrservice "github.com/upbound/provider-azure/apis/signalrservice/v1beta1"
-	v1beta1solutions "github.com/upbound/provider-azure/apis/solutions/v1beta1"
-	v1beta1spring "github.com/upbound/provider-azure/apis/spring/v1beta1"
-	v1beta1sql "github.com/upbound/provider-azure/apis/sql/v1beta1"
 	v1beta1storage "github.com/upbound/provider-azure/apis/storage/v1beta1"
-	v1beta1storagecache "github.com/upbound/provider-azure/apis/storagecache/v1beta1"
-	v1beta1storagepool "github.com/upbound/provider-azure/apis/storagepool/v1beta1"
-	v1beta1storagesync "github.com/upbound/provider-azure/apis/storagesync/v1beta1"
-	v1beta1streamanalytics "github.com/upbound/provider-azure/apis/streamanalytics/v1beta1"
-	v1beta1synapse "github.com/upbound/provider-azure/apis/synapse/v1beta1"
-	v1beta1timeseriesinsights "github.com/upbound/provider-azure/apis/timeseriesinsights/v1beta1"
 	v1alpha1 "github.com/upbound/provider-azure/apis/v1alpha1"
 	v1beta1apis "github.com/upbound/provider-azure/apis/v1beta1"
-	v1beta1web "github.com/upbound/provider-azure/apis/web/v1beta1"
 )
 
 func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1beta1.SchemeBuilder.AddToScheme,
-		v1beta1analysisservices.SchemeBuilder.AddToScheme,
-		v1beta1apimanagement.SchemeBuilder.AddToScheme,
-		v1beta1appconfiguration.SchemeBuilder.AddToScheme,
-		v1beta1appplatform.SchemeBuilder.AddToScheme,
-		v1beta1attestation.SchemeBuilder.AddToScheme,
-		v1beta1authorization.SchemeBuilder.AddToScheme,
-		v1beta1automation.SchemeBuilder.AddToScheme,
-		v1beta1azure.SchemeBuilder.AddToScheme,
-		v1beta1azurestackhci.SchemeBuilder.AddToScheme,
-		v1beta1botservice.SchemeBuilder.AddToScheme,
-		v1beta1cache.SchemeBuilder.AddToScheme,
-		v1beta1cdn.SchemeBuilder.AddToScheme,
-		v1beta1certificateregistration.SchemeBuilder.AddToScheme,
-		v1beta1cognitiveservices.SchemeBuilder.AddToScheme,
-		v1beta1communication.SchemeBuilder.AddToScheme,
-		v1beta1compute.SchemeBuilder.AddToScheme,
-		v1beta1confidentialledger.SchemeBuilder.AddToScheme,
-		v1beta1consumption.SchemeBuilder.AddToScheme,
-		v1beta1containerregistry.SchemeBuilder.AddToScheme,
-		v1beta1containerservice.SchemeBuilder.AddToScheme,
-		v1beta1cosmosdb.SchemeBuilder.AddToScheme,
-		v1beta1costmanagement.SchemeBuilder.AddToScheme,
-		v1beta1customproviders.SchemeBuilder.AddToScheme,
-		v1beta1databoxedge.SchemeBuilder.AddToScheme,
-		v1beta1databricks.SchemeBuilder.AddToScheme,
-		v1beta1datafactory.SchemeBuilder.AddToScheme,
-		v1beta1datamigration.SchemeBuilder.AddToScheme,
-		v1beta1dataprotection.SchemeBuilder.AddToScheme,
-		v1beta1datashare.SchemeBuilder.AddToScheme,
-		v1beta1dbformariadb.SchemeBuilder.AddToScheme,
 		v1beta1dbformysql.SchemeBuilder.AddToScheme,
 		v1beta1dbforpostgresql.SchemeBuilder.AddToScheme,
-		v1beta1devices.SchemeBuilder.AddToScheme,
-		v1beta1deviceupdate.SchemeBuilder.AddToScheme,
-		v1beta1devtestlab.SchemeBuilder.AddToScheme,
-		v1beta1digitaltwins.SchemeBuilder.AddToScheme,
-		v1beta1elastic.SchemeBuilder.AddToScheme,
-		v1beta1eventgrid.SchemeBuilder.AddToScheme,
-		v1beta1eventhub.SchemeBuilder.AddToScheme,
-		v1beta1fluidrelay.SchemeBuilder.AddToScheme,
-		v1beta1guestconfiguration.SchemeBuilder.AddToScheme,
-		v1beta1hdinsight.SchemeBuilder.AddToScheme,
-		v1beta1healthbot.SchemeBuilder.AddToScheme,
-		v1beta1healthcareapis.SchemeBuilder.AddToScheme,
-		v1beta1insights.SchemeBuilder.AddToScheme,
-		v1beta1iotcentral.SchemeBuilder.AddToScheme,
 		v1beta1keyvault.SchemeBuilder.AddToScheme,
-		v1beta1kusto.SchemeBuilder.AddToScheme,
-		v1beta1labservices.SchemeBuilder.AddToScheme,
-		v1beta1logic.SchemeBuilder.AddToScheme,
-		v1beta1logz.SchemeBuilder.AddToScheme,
-		v1beta1machinelearningservices.SchemeBuilder.AddToScheme,
-		v1beta1maintenance.SchemeBuilder.AddToScheme,
-		v1beta1managedidentity.SchemeBuilder.AddToScheme,
-		v1beta1management.SchemeBuilder.AddToScheme,
-		v1beta1maps.SchemeBuilder.AddToScheme,
-		v1beta1marketplaceordering.SchemeBuilder.AddToScheme,
-		v1beta1media.SchemeBuilder.AddToScheme,
-		v1beta1mixedreality.SchemeBuilder.AddToScheme,
-		v1beta1netapp.SchemeBuilder.AddToScheme,
 		v1beta1network.SchemeBuilder.AddToScheme,
-		v1beta1notificationhubs.SchemeBuilder.AddToScheme,
-		v1beta1operationalinsights.SchemeBuilder.AddToScheme,
-		v1beta1operationsmanagement.SchemeBuilder.AddToScheme,
-		v1beta1orbital.SchemeBuilder.AddToScheme,
-		v1beta1policyinsights.SchemeBuilder.AddToScheme,
-		v1beta1portal.SchemeBuilder.AddToScheme,
-		v1beta1powerbidedicated.SchemeBuilder.AddToScheme,
-		v1beta1purview.SchemeBuilder.AddToScheme,
-		v1beta1recoveryservices.SchemeBuilder.AddToScheme,
-		v1beta1relay.SchemeBuilder.AddToScheme,
-		v1beta1resources.SchemeBuilder.AddToScheme,
-		v1beta1search.SchemeBuilder.AddToScheme,
-		v1beta1security.SchemeBuilder.AddToScheme,
-		v1beta1securityinsights.SchemeBuilder.AddToScheme,
-		v1beta1servicebus.SchemeBuilder.AddToScheme,
-		v1beta1servicefabric.SchemeBuilder.AddToScheme,
-		v1beta1servicelinker.SchemeBuilder.AddToScheme,
-		v1beta1signalrservice.SchemeBuilder.AddToScheme,
-		v1beta1solutions.SchemeBuilder.AddToScheme,
-		v1beta1spring.SchemeBuilder.AddToScheme,
-		v1beta1sql.SchemeBuilder.AddToScheme,
 		v1beta1storage.SchemeBuilder.AddToScheme,
-		v1beta1storagecache.SchemeBuilder.AddToScheme,
-		v1beta1storagepool.SchemeBuilder.AddToScheme,
-		v1beta1storagesync.SchemeBuilder.AddToScheme,
-		v1beta1streamanalytics.SchemeBuilder.AddToScheme,
-		v1beta1synapse.SchemeBuilder.AddToScheme,
-		v1beta1timeseriesinsights.SchemeBuilder.AddToScheme,
 		v1alpha1.SchemeBuilder.AddToScheme,
 		v1beta1apis.SchemeBuilder.AddToScheme,
-		v1beta1web.SchemeBuilder.AddToScheme,
 	)
 }
 
