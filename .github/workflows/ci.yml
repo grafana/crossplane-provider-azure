@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - release-*
+  pull_request: {}
+  workflow_dispatch: {}
+
+jobs:
+  ci:
+    uses: upbound/uptest/.github/workflows/provider-ci.yml@main
+    secrets:
+      UPBOUND_MARKETPLACE_PUSH_ROBOT_USR: ${{ secrets.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR }}
+      UPBOUND_MARKETPLACE_PUSH_ROBOT_PSW: ${{ secrets.UPBOUND_MARKETPLACE_PUSH_ROBOT_PSW }}
