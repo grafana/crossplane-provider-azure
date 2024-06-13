@@ -18,7 +18,7 @@ on:
 
 jobs:
   publish-service-artifacts:
-    uses: crossplane/uptest/.github/workflows/provider-publish-service-artifacts.yml@main
+    uses: upbound/official-providers-ci/.github/workflows/provider-publish-service-artifacts.yml@standard-runners
     with:
       subpackages: ${{ github.event.inputs.subpackages }}
       size: ${{ github.event.inputs.size }}

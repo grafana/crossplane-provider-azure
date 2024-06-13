@@ -10,7 +10,7 @@ on:
 
 jobs:
   ci:
-    uses: crossplane/uptest/.github/workflows/provider-ci.yml@main
+    uses: upbound/official-providers-ci/.github/workflows/provider-ci.yml@standard-runners
     secrets:
       UPBOUND_MARKETPLACE_PUSH_ROBOT_USR: ${{ secrets.UPBOUND_MARKETPLACE_PUSH_ROBOT_USR }}
       UPBOUND_MARKETPLACE_PUSH_ROBOT_PSW: ${{ secrets.UPBOUND_MARKETPLACE_PUSH_ROBOT_PSW }}
