@@ -39,6 +39,13 @@ func Configure(p *config.Provider) {
 			Type:      rconfig.APISPackagePath + "/network/v1beta1.PrivateDNSZone",
 			Extractor: rconfig.ExtractResourceIDFuncPath,
 		}
+		r.Sensitive.AdditionalConnectionDetailsFn = func(attr map[string]interface{}) (map[string][]byte, error) {
+			return map[string][]byte{
+				xpv1.ResourceCredentialsSecretUserKey:     []byte(fmt.Sprintf("%s@%s", attr["administrator_login"], attr["name"])),
+				xpv1.ResourceCredentialsSecretEndpointKey: []byte(attr["fqdn"].(string)),
+				xpv1.ResourceCredentialsSecretPortKey:     []byte(strconv.Itoa(mysqlServerPort)),
+			}, nil
+		}
 	})
 
 	p.AddResourceConfigurator("azurerm_mysql_flexible_database", func(r *config.Resource) {
